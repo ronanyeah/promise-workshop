@@ -1,4 +1,4 @@
-const { get, getJson, isString } = window.functions;
+const fns = window.functions;
 
 QUnit.test(
   'isString pass',
@@ -7,7 +7,7 @@ QUnit.test(
 
     const testString = 'hello i am a string';
 
-    get(testString)
+    fns.isString(testString)
     .then(
       data => {
         assert.ok( data === testString, 'data is correct' );
@@ -24,7 +24,7 @@ QUnit.test(
   assert => {
     const done = assert.async();
 
-    isString(999)
+    fns.isString(999)
     .then(console.log)
     .catch(
       err => {
@@ -42,7 +42,7 @@ QUnit.test(
   assert => {
     const done = assert.async();
 
-    get('https://jsonplaceholder.typicode.com/posts/1')
+    fns.get('https://jsonplaceholder.typicode.com/posts/1')
     .then(
       data => {
         const post = JSON.parse(data);
@@ -60,7 +60,7 @@ QUnit.test(
   assert => {
     const done = assert.async();
 
-    get('http://httpstat.us/404')
+    fns.get('http://httpstat.us/404')
     .then(console.log)
     .catch(
       err => {
@@ -77,7 +77,7 @@ QUnit.test(
   assert => {
     const done = assert.async();
 
-    get('http://httpstat.us/401')
+    fns.get('http://httpstat.us/401')
     .then(console.log)
     .catch(
       err => {
@@ -94,7 +94,7 @@ QUnit.test(
   assert => {
     const done = assert.async();
 
-    getJson('https://jsonplaceholder.typicode.com/posts/2')
+    fns.getJson('https://jsonplaceholder.typicode.com/posts/2')
     .then(
       post => {
         assert.ok( post.id === 2, 'id correct' );
@@ -111,7 +111,7 @@ QUnit.test(
   assert => {
     const done = assert.async();
 
-    getJson('http://httpstat.us/200')
+    fns.getJson('http://httpstat.us/200')
     .then(console.log)
     .catch(
       err => {
