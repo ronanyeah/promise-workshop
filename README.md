@@ -17,7 +17,7 @@ isGreaterThanTen(12)
 .catch( /* not called */ )
 ```
 
-3. Using the resolve/reject methods:
+2. Using the resolve/reject methods:
 ```
 const isGreaterThanTen = number => {
   return number > 10
